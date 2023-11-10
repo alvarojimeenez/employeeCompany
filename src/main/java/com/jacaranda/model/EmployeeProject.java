@@ -27,6 +27,17 @@ public class EmployeeProject {
 	
 	private double hora;
 
+	public EmployeeProject() {
+		super();
+		
+	}
+	public EmployeeProject(Employee employee, Project project, double hora) {
+		super();
+		this.employee = employee;
+		this.project = project;
+		this.hora = hora;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}

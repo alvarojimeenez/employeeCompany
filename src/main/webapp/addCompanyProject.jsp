@@ -44,7 +44,7 @@
 			}
 		}
 	}catch(Exception e){
-		out.println(e.getMessage());
+		
 	}
 	
 	if (role.equals("admin")){
@@ -123,6 +123,7 @@
   <div class="form-group row">
     <div class="offset-4 col-8">
       <button name="submit" type="submit" class="btn btn-danger">Agregar proyecto</button>
+      <button type="submit" name="submit" class="btn btn"><a href="listEmployeeProject.jsp">Volver a la lista</a></button>
     </div>
   </div>
 		

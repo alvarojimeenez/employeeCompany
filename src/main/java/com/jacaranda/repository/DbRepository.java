@@ -13,7 +13,6 @@ public class DbRepository {
 	
 	
 	public static <T> T find(Class<T> c, int id) throws Exception {
-		Transaction transaction = null;
 		Session session; 
 		T result = null;
 		try {
@@ -58,6 +57,7 @@ public class DbRepository {
 			
 		}catch (Exception e) {
 			transaction.rollback();
+			System.out.println(e);
 		}
 		
 		session.close();
@@ -101,7 +101,7 @@ public class DbRepository {
 		return result;
 	}
 	
-	public static <T> T findUser(Class<T> c, String user) throws Exception {
+	public static <T> T findProject(Class<T> c, String project) throws Exception {
 		Transaction transaction = null;
 		Session session; 
 		T result = null;
@@ -111,7 +111,23 @@ public class DbRepository {
 			throw new Exception("Error en la base de datos");
 		}
 		try {
-			result = session.find(c, user);
+			result = session.find(c, project);
+		}catch (Exception e) {
+			throw new Exception("Error al obtener la entidad");
+		}
+		return result;
+	}
+	
+	public static <T> T find(Class<T> c, T obj) throws Exception {
+		Session session; 
+		T result = null;
+		try {
+			session = DbUtility.getSessionFactory().openSession();
+		}catch (Exception e) {
+			throw new Exception("Error en la base de datos");
+		}
+		try {
+			result = session.find(c, obj);
 		}catch (Exception e) {
 			throw new Exception("Error al obtener la entidad");
 		}
